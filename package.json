@@ -1,10 +1,14 @@
 {
-  "name": "broker",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "name": "@lannuttia/telegram",
+  "version": "0.0.0",
+  "description": "Generic brokers designed for routing information in a single process",
+  "main": "src/index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "lint": "npx eslint src/",
+    "test": "npm run lint",
+    "preversion": "npm run test",
+    "version": "git add -A src",
+    "postversion": "git push && git push --tags"
   },
   "keywords": [],
   "author": "Anthony Lannutti <lannuttia@gmail.com>",
