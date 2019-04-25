@@ -1,6 +1,6 @@
 {
   "name": "@lannuttia/telegram",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "description": "Generic brokers designed for routing information in a single process",
   "main": "src/index.js",
   "scripts": {
