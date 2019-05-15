@@ -1,34 +1,28 @@
 export default class PubSub {
-  constructor() {
-    this._subscriptions = new Map();
-  }
+  #subscriptions = new Map();
 
   publish(topic, payload) {
-    if (this._subscriptions.has(topic)) {
-      const callbacks = this._subscriptions.get(topic);
+    if (this.#subscriptions.has(topic)) {
+      const callbacks = this.#subscriptions.get(topic);
       callbacks.forEach((cb) => {
         cb(payload);
       });
     }
   }
 
-  subscribe(topic, callback) {
-    if (this._subscriptions.has(topic)) {
-      const callbacks = this._subscriptions.get(topic);
-      this._subscriptions.set(topic, [...callbacks, callback]);
+  subscribe(topic, key, callback) {
+    if (this.#subscriptions.has(topic)) {
+      const map = this.#subscriptions.get(topic);
+      this.#subscriptions.set(topic, map.set(key, callback));
     } else {
-      this._subscriptions.set(topic, [callback]);
+      this.#subscriptions.set(topic, new Map([[key, callback]]));
     }
   }
 
-  unsubscribe(topic, callback) {
-    if (this._subscriptions.has(topic)) {
-      const callbacks = this._subscriptions.get(topic);
-      const idx = callbacks.findIndex(callback);
-      if (idx > -1) {
-        this._subscriptions.set(topic, callbacks.splice(idx, 1));
-        return true;
-      }
+  unsubscribe(topic, key) {
+    if (this.#subscriptions.has(topic)) {
+      const map = this.#subscriptions.get(topic);
+      return map.delete(key);
     }
     return false;
   }

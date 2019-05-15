@@ -1,33 +1,41 @@
-export default class ReqResp {
-  constructor() {
-    this._registrations = new Map();
-  }
-
-  register(event, handler) {
-    if (this._registrations.has(event)) {
-      this._registrations.get(event).push(handler);
-    } else {
-      this._registrations.set(event, [handler]);
+function generatorFactory(responders, payload) {
+  function* generator(handlers, data) {
+    // eslint-disable-next-line no-restricted-syntax
+    for (const handler of handlers) {
+      yield handler(data);
     }
   }
 
-  unregister(event, handler) {
-    if (this._registrations.has(event)) {
-      const handlers = this._registrations.get(event);
-      const idx = handlers.findIndex(handler);
-      if (idx > -1) {
-        handlers.splice(idx, 1);
-        return true;
-      }
+  return generator(responders, payload);
+}
+
+export default class ReqResp {
+  #registrations = new Map();
+
+  register(event, key, handler) {
+    if (this.#registrations.has(event)) {
+      const map = this.#registrations.get(event);
+      map.set(key, handler);
+    } else {
+      this.#registrations.set(event, new Map([[key, handler]]));
+    }
+  }
+
+  unregister(event, key) {
+    if (this.#registrations.has(event)) {
+      const map = this.#registrations.get(event);
+      return map.delete(key);
     }
     return false;
   }
 
   request(event, payload) {
-    if (this._registrations.has(event)) {
-      const handlers = this._registrations.get(event);
-      return handlers.map(handler => handler(payload));
+    if (this.#registrations.has(event)) {
+      const map = this.#registrations.get(event);
+      const handlers = map.values();
+      return generatorFactory(handlers, payload);
     }
-    return [];
+
+    return null;
   }
 }
