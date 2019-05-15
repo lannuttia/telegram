@@ -62,3 +62,6 @@ typings/
 
 # Ignore WebStorm files
 .idea
+
+# Ignore build products
+lib
