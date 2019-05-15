@@ -5,7 +5,7 @@
   "main": "lib/index.js",
   "scripts": {
     "lint": "npx eslint src/",
-    "test": "npm run lint",
+    "test": "npx jest --coverage",
     "build": "npx babel src -d lib",
     "preversion": "npm run test",
     "version": "git add -A src",
@@ -24,6 +24,7 @@
     "babel-eslint": "^10.0.1",
     "eslint": "^5.16.0",
     "eslint-config-airbnb-base": "^13.1.0",
-    "eslint-plugin-import": "^2.16.0"
+    "eslint-plugin-import": "^2.16.0",
+    "jest": "^24.8.0"
   }
 }
