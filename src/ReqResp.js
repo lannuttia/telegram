@@ -1,15 +1,4 @@
-function generatorFactory(responders, payload) {
-  function* generator(handlers, data) {
-    // eslint-disable-next-line no-restricted-syntax
-    for (const handler of handlers) {
-      yield handler(data);
-    }
-  }
-
-  return generator(responders, payload);
-}
-
-export default class ReqResp {
+class ReqResp {
   #registrations = new Map();
 
   register(event, key, handler) {
@@ -24,7 +13,11 @@ export default class ReqResp {
   unregister(event, key) {
     if (this.#registrations.has(event)) {
       const map = this.#registrations.get(event);
-      return map.delete(key);
+      const deleted = map.delete(key);
+      if (map.size === 0) {
+        this.#registrations.delete(event);
+      }
+      return deleted;
     }
     return false;
   }
@@ -32,10 +25,10 @@ export default class ReqResp {
   request(event, payload) {
     if (this.#registrations.has(event)) {
       const map = this.#registrations.get(event);
-      const handlers = map.values();
-      return generatorFactory(handlers, payload);
+      return Array.from(map.values()).map(handler => handler(payload));
     }
-
-    return null;
+    return [];
   }
 }
+
+export default ReqResp;
