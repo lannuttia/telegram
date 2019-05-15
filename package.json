@@ -3,6 +3,9 @@
   "version": "1.0.0",
   "description": "Generic brokers designed for routing information in a single process",
   "main": "lib/index.js",
+  "files": [
+    "lib"
+  ],
   "scripts": {
     "lint": "npx eslint src/",
     "test": "npx jest --coverage",

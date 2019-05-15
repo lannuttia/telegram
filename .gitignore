@@ -68,3 +68,6 @@ lib
 
 # Ignore test coverage reports
 coverage
+
+# Ignore generated dist tarball
+lannuttia-telegram-*.tgz
