@@ -22,6 +22,9 @@ export default class PubSub {
   unsubscribe(topic, key) {
     if (this.#subscriptions.has(topic)) {
       const map = this.#subscriptions.get(topic);
+      if (this.#subscriptions.size <= 1) {
+        this.#subscriptions.delete(topic);
+      }
       return map.delete(key);
     }
     return false;
