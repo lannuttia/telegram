@@ -13,20 +13,16 @@ test('Setting up a Subscription', () => {
   const TOPIC = Symbol('Some garbage topic');
   const [
     firstKey,
-    secondKey
+    secondKey,
   ] = [
     Symbol('Some unique key'),
-    Symbol('Another unique key')
+    Symbol('Another unique key'),
   ];
 
   const noop = () => {};
-  const subMock = jest.fn((key) => {
-    return broker.subscribe(TOPIC, key, noop);
-  });
+  const subMock = jest.fn(key => broker.subscribe(TOPIC, key, noop));
 
-  const unsubMock = jest.fn((key) => {
-    return broker.unsubscribe(TOPIC, key);
-  });
+  const unsubMock = jest.fn(key => broker.unsubscribe(TOPIC, key));
 
   subMock(firstKey);
   subMock(secondKey);
@@ -38,25 +34,23 @@ test('Setting up a Subscription', () => {
   expect(unsubMock).toHaveReturned();
   unsubMock(firstKey);
   expect(unsubMock).toHaveReturned();
-  expect(unsubMock).toHaveReturnedWith(false)
+  expect(unsubMock).toHaveReturnedWith(false);
   expect(unsubMock).toHaveBeenCalledTimes(3);
 });
 
 test('Payload routing on publish', () => {
   const TOPIC = Symbol('Some garbage topic');
-  const PAYLOAD = Symbol('Some payload')
+  const PAYLOAD = Symbol('Some payload');
   const calledMock = jest.fn();
 
-  const publishMock = jest.fn(() => {
-    return broker.publish(TOPIC, PAYLOAD);
-  });
+  const publishMock = jest.fn(() => broker.publish(TOPIC, PAYLOAD));
   publishMock();
   expect(publishMock).toHaveReturned();
 
   const key = Symbol('Some unique key');
-  broker.subscribe(TOPIC, key, calledMock)
+  broker.subscribe(TOPIC, key, calledMock);
   publishMock();
-  broker.unsubscribe(TOPIC, key)
+  broker.unsubscribe(TOPIC, key);
   expect(calledMock).toHaveBeenCalledTimes(1);
   expect(calledMock).toHaveBeenCalledWith(PAYLOAD);
-})
+});
