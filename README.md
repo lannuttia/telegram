@@ -5,7 +5,7 @@ Telegram is a library for opaque data routing.
 * **Loose Coupling** Never tightly couple your consumer code with the provider again. Whether acquiring data via HTTP, WebSockets, or an HTML5 postMessage, never have to modify you consumer code again just because the data source changed.
 
 # Installation
-Telegram is available on [npm](https://npmjs.org) as [@lannuttia/telegram](https://npmjs.org/packages/@lannuttia/telegram).
+Telegram is available on [npm](https://npmjs.org) as [@lannuttia/telegram](https://npmjs.org/package/@lannuttia/telegram).
 
 # Documentation
 Coming soon...
