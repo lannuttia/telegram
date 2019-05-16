@@ -1,13 +1,20 @@
-# Telegram &middot; [![Github License](https://img.shields.io/github/license/lannuttia/telegram.svg?style=plastic)](https://github.com/lannuttia/telegram/blob/master/LICENSE) [![Report an issue!](https://img.shields.io/github/issues/lannuttia/telegram.svg?style=plastic)](https://github.com/lannuttia/telegram/issues)
+# Telegram &middot; [![Github License](https://img.shields.io/github/license/lannuttia/telegram.svg?style=plastic)](https://github.com/lannuttia/telegram/blob/master/LICENSE) [![Report an issue!](https://img.shields.io/github/issues/lannuttia/telegram.svg?style=plastic)](https://github.com/lannuttia/telegram/issues) [![Build](https://travis-ci.org/lannuttia/telegram.svg?branch=master)](https://travis-ci.org/lannuttia/telegram)
 Telegram is a library for opaque data routing.
 * **Simple:** Telegram allows you to easily start opaquely routing payloads.
 * **Flexible:** With support for both the Publish/Subscribe pattern as well as the Request/Response pattern, you can passively receive updates or actively acquire data.
-* **Loose Coupling** Never tightly couple your consumer code with the provider again. Whether acquiring data via HTTP, WebSockets, or an HTML5 postMessage, never have modify consumer code just because the data source changed.
+* **Loose Coupling** Never tightly couple your consumer code with the provider again. Whether acquiring data via HTTP, WebSockets, or an HTML5 postMessage, never have to modify you consumer code again just because the data source changed.
 
-### Why would I want to use these???
-Because loose coupling is important!!! The Pub/Sub pattern is intended to passively push updates on topics. The Req/Resp pattern is intended for actively requesting information from some data source(s). By interfacing with these brokers, instead of directly with the data source, you can ensure looser coupling between consumers and suppliers.
+# Installation
+Telegram is available on [npm](https://npmjs.org) as [@lannuttia/telegram](https://npmjs.org/packages/@lannuttia/telegram).
 
-### Supported Environments
-Currently my intention is for this to work in both the Node environment as well as in a (modern) browser environment.
+# Documentation
+Coming soon...
 
-If anyone has any ideas or improvements, feel free to open an issue or submit a pull request.
+# Examples
+Coming soon...
+
+# Contributing
+If you have any type of feature request or bugfix, feel free to open an issue or submit a pull request. 
+
+# License
+Telegram is [MIT Licensed](https://github.com/lannuttia/telegram/blob/master/LICENSE).
