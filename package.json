@@ -10,6 +10,7 @@
     "lint": "npx eslint src/",
     "test": "npx jest --coverage",
     "build": "npx babel src -d lib",
+    "doc": "npx jsdoc -R ./README.md -P ./package.json -d docs src",
     "preversion": "npm run test",
     "version": "git add -A src",
     "postversion": "git push && git push --tags"
@@ -30,6 +31,7 @@
     "eslint-config-airbnb-base": "^13.1.0",
     "eslint-plugin-import": "^2.16.0",
     "eslint-plugin-jest": "^22.5.1",
-    "jest": "^24.8.0"
+    "jest": "^24.8.0",
+    "jsdoc": "^3.6.2"
   }
 }
