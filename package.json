@@ -10,7 +10,7 @@
     "lint": "npx eslint src/",
     "test": "npx jest --coverage",
     "build": "npx babel src -d lib",
-    "doc": "npx jsdoc -R ./README.md -P ./package.json -d docs src",
+    "doc": "npx jsdoc --pedantic -R ./README.md -P ./package.json -d docs src",
     "preversion": "npm run test",
     "version": "git add -A src",
     "postversion": "git push && git push --tags"
