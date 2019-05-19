@@ -12,6 +12,7 @@ export default class PubSub {
    * @name PubSub#publish
    * @param {*} topic - The topic for the payload to be published on.
    * @param {*} payload - The payload that will be published.
+   * @returns {void}
    */
   publish(topic, payload) {
     if (this.#subscriptions.has(topic)) {
@@ -35,6 +36,7 @@ export default class PubSub {
    * @param {*} topic - The topic of interest.
    * @param {*} key - The value that is used to uniquely identify the callback.
    * @param {handlePayload} callback - The callback that will be ran when a payload is published.
+   * @returns {void}
    */
   subscribe(topic, key, callback) {
     if (this.#subscriptions.has(topic)) {
@@ -50,7 +52,7 @@ export default class PubSub {
    * @name PubSub#unsubscribe
    * @param {*} topic - The topic that should be unsubscribed from.
    * @param {*} key - The key that was used when subscribing.
-   * @returns {boolean} - True if the unsubscription was successful, false otherwise.
+   * @returns {boolean} True if the unsubscription was successful, false otherwise.
    */
   unsubscribe(topic, key) {
     if (this.#subscriptions.has(topic)) {
