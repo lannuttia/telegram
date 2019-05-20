@@ -15,7 +15,20 @@
     "version": "npm run doc && git add -A src/ docs/",
     "postversion": "git push && git push --tags"
   },
-  "keywords": [],
+  "keywords": [
+    "publish",
+    "subscribe",
+    "publish/subscribe",
+    "pub/sub",
+    "request",
+    "resposne",
+    "request/response",
+    "req/resp",
+    "decouple",
+    "mediator",
+    "message broker",
+    "broker"
+  ],
   "author": "Anthony Lannutti <lannuttia@gmail.com>",
   "license": "MIT",
   "repository": {
