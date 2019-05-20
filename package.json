@@ -12,7 +12,7 @@
     "build": "npx babel src -d lib",
     "doc": "npx jsdoc --pedantic -R ./README.md -P ./package.json -d docs src",
     "preversion": "npm run test",
-    "version": "npm run doc && git add -A src",
+    "version": "npm run doc && git add -A src/ docs/",
     "postversion": "git push && git push --tags"
   },
   "keywords": [],
