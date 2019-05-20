@@ -8,7 +8,7 @@ Telegram is a library for opaque data routing.
 Telegram is available on [npm](https://npmjs.org) as [@lannuttia/telegram](https://npmjs.org/package/@lannuttia/telegram).
 
 # Documentation
-Coming soon...
+Documentation can be found [here](https://lannuttia.github.io/telegram/@lannuttia/telegram/2.0.1/index.html).
 
 # Examples
 Coming soon...
