@@ -53,7 +53,7 @@ class ReqResp {
   request(topic, payload) {
     if (this.#registrations.has(topic)) {
       const map = this.#registrations.get(topic);
-      return Array.from(map.values()).map(handler => handler(payload));
+      return Array.from(map.values()).map((handler) => handler(payload));
     }
     return [];
   }
